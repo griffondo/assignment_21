@@ -11,8 +11,8 @@ const SavedBooks = () => {
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
-  useEffect(() => {
-    const getUserData = async () => {
+  useQuery(() => {
+    const getMe = async () => {
       try {
         const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -31,6 +31,7 @@ const SavedBooks = () => {
       } catch (err) {
         console.error(err);
       }
+      userData = setUserData
     };
 
     getUserData();
